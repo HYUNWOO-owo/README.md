@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Namespace must match the fully qualified name of the mapper interface -->
+<mapper namespace="kr.co.ictedu.pitched.admin.dao.AdminAuthDao">
+
+    <!--
+      THIS IS WHERE YOUR ADMIN LOGIN SQL GOES.
+      This query will run against the POSTGRESQL database.
+    -->
+    <select id="findByUsername" resultType="kr.co.ictedu.pitched.admin.dto.AdminAuthDto">
+        SELECT
+            id AS adminId,
+            username,
+            password
+        FROM
+            admins
+        WHERE
+            username = #{username}
+    </select>
+
+</mapper>

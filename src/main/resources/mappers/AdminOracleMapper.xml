@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Namespace must match the fully qualified name of the new mapper interface -->
+<mapper namespace="kr.co.ictedu.pitched.admin.dao.AdminOracleDao">
+
+    <!--
+      =====================================================================
+      THIS IS WHERE YOUR ADMIN'S SQL QUERIES FOR THE ORACLE DATABASE GO.
+      These queries are for the admin to manage the service data.
+      =====================================================================
+    -->
+
+    <select id="findServiceDataByName" resultType="kr.co.ictedu.pitched.client.dto.ServiceData">
+        SELECT
+            id,
+            name,
+            description
+        FROM
+            your_oracle_table
+        WHERE
+            LOWER(name) LIKE LOWER('%' || #{name} || '%')
+    </select>
+
+    <delete id="deleteServiceDataById">
+        DELETE FROM
+            your_oracle_table
+        WHERE
+            id = #{id}
+    </delete>
+
+</mapper>
